@@ -1,0 +1,146 @@
+{
+  "OpenSapphire 程序骨架": {
+    "prefix": "os",
+    "body": [
+      "import os;",
+      "import style;",
+      "",
+      "com {",
+      "    st1(\"${1:标题}\");",
+      "    st2(\"${2:副标题}\");",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "创建一个 OpenSapphire 程序骨架"
+  },
+  "OpenSapphire 库文件骨架": {
+    "prefix": "oslm",
+    "body": [
+      "import os;",
+      "",
+      "org {",
+      "    function ${1:name}(${2:int a; int b}) {",
+      "        $0",
+      "    }",
+      "}"
+    ],
+    "description": "创建一个 .oslm 库文件骨架"
+  },
+  "com 执行块": {
+    "prefix": "com",
+    "body": [
+      "com {",
+      "    $0",
+      "}"
+    ],
+    "description": "执行块 com { }"
+  },
+  "org 定义块": {
+    "prefix": "org",
+    "body": [
+      "org {",
+      "    $0",
+      "}"
+    ],
+    "description": "定义块 org { }（用于 .oslm 库）"
+  },
+  "net 块": {
+    "prefix": "net",
+    "body": [
+      "net {",
+      "    $0",
+      "}"
+    ],
+    "description": "网络块 net { }"
+  },
+  "函数定义 function": {
+    "prefix": "function",
+    "body": [
+      "function ${1:name}(${2:int a; int b}) {",
+      "    $0",
+      "}"
+    ],
+    "description": "定义一个函数（放在 .oslm 的 org 块里）"
+  },
+  "导入库文件": {
+    "prefix": "importlib",
+    "body": "import ${1:lib}.oslm;",
+    "description": "导入一个 .oslm 库"
+  },
+  "一级标题 st1": {
+    "prefix": "st1",
+    "body": "st1(\"${1:Hello World!}\");",
+    "description": "一级标题（h1）"
+  },
+  "二级标题 st2": {
+    "prefix": "st2",
+    "body": "st2(\"${1:副标题}\");",
+    "description": "二级标题（h2）"
+  },
+  "三级标题 st3": {
+    "prefix": "st3",
+    "body": "st3(\"${1:标题}\");",
+    "description": "三级标题（h3）"
+  },
+  "图片 image": {
+    "prefix": "image",
+    "body": "image(src=\"${1:test.svg}\", alt=\"${2:图片}\");",
+    "description": "插入图片"
+  },
+  "按钮 botton": {
+    "prefix": "botton",
+    "body": "botton(\"${1:按钮}\", \"${2:event_name}\");",
+    "description": "插入按钮"
+  },
+  "提示框 tip": {
+    "prefix": "tip",
+    "body": "tip(\"${1:提示内容}\");",
+    "description": "输出一个提示框"
+  },
+  "文本 text": {
+    "prefix": "text",
+    "body": "text(\"${1:内容}\");",
+    "description": "插入文本"
+  },
+  "链接 link": {
+    "prefix": "link",
+    "body": "link(\"${1:文字}\", href=\"${2:https://example.com}\");",
+    "description": "插入链接"
+  },
+  "输入框 input": {
+    "prefix": "input",
+    "body": "input(type=\"${1:text}\", placeholder=\"${2:请输入}\");",
+    "description": "插入输入框"
+  },
+  "分隔线 hr": {
+    "prefix": "hr",
+    "body": "hr();",
+    "description": "插入分隔线"
+  },
+  "事件 event": {
+    "prefix": "event",
+    "body": [
+      "event(\"${1:event_name}\") {",
+      "    ${2:addhttp(\"https://cn.bing.com\");}",
+      "}"
+    ],
+    "description": "定义事件"
+  },
+  "跳转 addhttp": {
+    "prefix": "addhttp",
+    "body": "addhttp(\"${1:https://cn.bing.com}\");",
+    "description": "事件中跳转到指定网址"
+  },
+  "样式块 style": {
+    "prefix": "style",
+    "body": [
+      "style {",
+      "    ${1:st1} {",
+      "        ${2:color}: ${3:#5fd3ff};",
+      "    }",
+      "}"
+    ],
+    "description": "定义样式块"
+  }
+}

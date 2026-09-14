@@ -1,0 +1,120 @@
+{
+  "name": "opensapphire",
+  "displayName": "OpenSapphire",
+  "description": "OpenSapphire 前端语言支持：语法高亮、补全、悬停文档、一键编译（.os / .oslm）",
+  "version": "1.3.0",
+  "publisher": "opensapphire",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/opensapphire-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages", "Snippets", "Other"],
+  "keywords": ["opensapphire", "os", "oslm", "frontend", "html"],
+  "icon": "icon.png",
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:opensapphire"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "opensapphire",
+        "aliases": ["OpenSapphire", "os"],
+        "extensions": [".os"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "opensapphire-lib",
+        "aliases": ["OpenSapphire Library", "oslm"],
+        "extensions": [".oslm"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "opensapphire",
+        "scopeName": "source.opensapphire",
+        "path": "./syntaxes/opensapphire.tmLanguage.json"
+      },
+      {
+        "language": "opensapphire-lib",
+        "scopeName": "source.opensapphire",
+        "path": "./syntaxes/opensapphire.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "opensapphire",
+        "path": "./snippets/opensapphire.json"
+      },
+      {
+        "language": "opensapphire-lib",
+        "path": "./snippets/opensapphire.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "opensapphire.run",
+        "title": "OpenSapphire: 编译当前文件",
+        "icon": "$(play)"
+      },
+      {
+        "command": "opensapphire.showOutput",
+        "title": "OpenSapphire: 显示编译输出"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "opensapphire.run",
+          "when": "editorLangId == opensapphire",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "opensapphire.run",
+          "when": "editorLangId == opensapphire"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "opensapphire.run",
+        "key": "ctrl+alt+r",
+        "mac": "cmd+alt+r",
+        "when": "editorLangId == opensapphire"
+      }
+    ],
+    "configuration": {
+      "title": "OpenSapphire",
+      "properties": {
+        "opensapphire.jarPath": {
+          "type": "string",
+          "default": "",
+          "description": "osw.jar 的绝对路径。留空则直接使用 PATH 中的 osw 命令。"
+        },
+        "opensapphire.javaPath": {
+          "type": "string",
+          "default": "java",
+          "description": "java 可执行文件路径。"
+        },
+        "opensapphire.autoOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "编译成功后自动用默认浏览器打开生成的 HTML。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "echo \"no build step\""
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "OpenSapphire",
+  "scopeName": "source.opensapphire",
+  "fileTypes": [".os", ".oslm"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#import" },
+    { "include": "#function-def" },
+    { "include": "#keywords" },
+    { "include": "#block-names" },
+    { "include": "#css-properties" },
+    { "include": "#css-colors" },
+    { "include": "#builtin-elements" },
+    { "include": "#event-handlers" },
+    { "include": "#parameter-types" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#punctuation" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.opensapphire",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.opensapphire",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "import": {
+      "patterns": [
+        {
+          "match": "\\b(import)\\s+\"([^\"]+)\"",
+          "captures": {
+            "1": { "name": "keyword.control.import.opensapphire" },
+            "2": { "name": "string.quoted.double.module.opensapphire" }
+          }
+        },
+        {
+          "match": "\\b(import)\\s+([A-Za-z_][\\w./\\\\-]*)",
+          "captures": {
+            "1": { "name": "keyword.control.import.opensapphire" },
+            "2": {
+              "name": "entity.name.type.module.opensapphire",
+              "patterns": [
+                {
+                  "name": "string.quoted.other.library.opensapphire",
+                  "match": "\\.oslm\\b"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "function-def": {
+      "patterns": [
+        {
+          "name": "meta.function.definition.opensapphire",
+          "match": "\\b(function)\\s+([A-Za-z_][\\w-]*)\\s*(\\()",
+          "captures": {
+            "1": { "name": "storage.type.function.opensapphire" },
+            "2": { "name": "entity.name.function.opensapphire" },
+            "3": { "name": "punctuation.section.parens.begin.opensapphire" }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "name": "keyword.control.opensapphire",
+      "match": "\\b(event|style)\\b"
+    },
+    "block-names": {
+      "name": "storage.type.block.opensapphire",
+      "match": "\\b(com|org|net)\\b"
+    },
+    "css-properties": {
+      "name": "support.type.property-name.opensapphire",
+      "match": "\\b(color|background|background-color|font-size|font-weight|font-family|padding|padding-top|padding-right|padding-bottom|padding-left|margin|margin-top|margin-right|margin-bottom|margin-left|border|border-top|border-left|border-right|border-bottom|border-left-color|border-radius|width|height|max-width|min-width|max-height|min-height|display|flex|flex-direction|flex-wrap|gap|align-items|align-self|justify-content|text-align|text-decoration|letter-spacing|line-height|opacity|box-shadow|transform|transition|cursor|position|top|right|bottom|left|overflow|z-index)\\b(?=\\s*:)"
+    },
+    "css-colors": {
+      "name": "constant.other.color.rgb-value.opensapphire",
+      "match": "#[0-9a-fA-F]{3,8}\\b"
+    },
+    "builtin-elements": {
+      "name": "support.function.builtin.opensapphire",
+      "match": "\\b(st[1-6]|image|img|botton|button|text|link|input|hr|row|col|box|block|tip)\\b(?=\\s*[\\s(])"
+    },
+    "event-handlers": {
+      "name": "support.function.event.opensapphire",
+      "match": "\\b(addhttp|openurl|goto|jump|alert|print|settext|setcolor|hide)\\b(?=\\s*\\()"
+    },
+    "parameter-types": {
+      "name": "storage.type.opensapphire",
+      "match": "\\b(int|string|float|bool|any|text|number)\\b"
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.opensapphire",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.opensapphire", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.single.opensapphire",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            { "name": "constant.character.escape.opensapphire", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.opensapphire",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.terminator.opensapphire", "match": ";" },
+        { "name": "punctuation.separator.opensapphire", "match": "," },
+        { "name": "punctuation.section.block.begin.opensapphire", "match": "\\{" },
+        { "name": "punctuation.section.block.end.opensapphire", "match": "\\}" },
+        { "name": "punctuation.section.parens.begin.opensapphire", "match": "\\(" },
+        { "name": "punctuation.section.parens.end.opensapphire", "match": "\\)" },
+        { "name": "keyword.operator.assignment.opensapphire", "match": "=" },
+        { "name": "punctuation.definition.selector.opensapphire", "match": "\\.[A-Za-z_][\\w-]*" }
+      ]
+    },
+    "identifiers": {
+      "name": "variable.other.opensapphire",
+      "match": "\\b[A-Za-z_][\\w-]*\\b"
+    }
+  }
+}
